@@ -63,7 +63,7 @@ $result = $stmt->get_result();
             htmlout($ispis);
         }
       }else{
-            $ispis = "<tr>Nema rezervacija za trazenu dvoranu</tr>";
+            $ispis = "<p>Nema rezervacija za trazenu dvoranu</p>";
             htmlout($ispis);          
       }
       ?>
