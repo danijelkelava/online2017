@@ -28,14 +28,25 @@ $result = $stmt->get_result();
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
 	<title>Rezervacije</title>
 </head>
 <body>
-    <nav>
-        <a href="index.php">Natrag</a>
-    </nav>
-    <h1>Rezervacije za dvoranu: <?php echo $_GET['oznDvorana']; ?></h1>
-    <div>
+    <header class="container">
+        <nav>
+            <ul class="nav">
+                <li class="nav-item">
+                   <a class="nav-link" href="index.php">Natrag</a> 
+                </li>
+            </ul>      
+        </nav>  
+    </header>
+    
+    <div class="container">
+        <h1>Rezervacije za dvoranu: <?php echo $_GET['oznDvorana']; ?></h1>
+    </div>
+    
+    <div class="container">
       <?php
       if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){

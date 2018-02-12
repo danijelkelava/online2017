@@ -10,11 +10,16 @@ $result = $mysqli->query($q);
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
 	<title>Dvorane</title>
 </head>
 <body>
-    <h1>Dvorane</h1>
-    <table>
+    <div class="container">
+       <h1>Dvorane</h1> 
+    </div>
+    
+    <div class="container">
+    <table class="table">
       <tr>
         <th>Oznake dvorana</th>
       </tr>
@@ -30,5 +35,6 @@ $result = $mysqli->query($q);
       }
       ?>
     </table>
+    </div>
 </body>
 </html>
