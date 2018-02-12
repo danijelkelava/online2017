@@ -9,13 +9,19 @@ require "db_connection.php";
 
 $q = "SELECT 
 rezervacija.oznDvorana, 
-rezervacija.oznVrstaDan,
+rezervacija.oznVrstaDan AS dan,
 rezervacija.sat AS termin, 
 rezervacija.sifPred, 
 pred.nazPred AS predmet
 FROM rezervacija
 inner join pred on rezervacija.sifPred = pred.sifPred
-where oznDvorana=?";
+where oznDvorana=? ORDER BY 
+                         CASE WHEN dan='PO' THEN 0
+                              WHEN dan='UT' THEN 1
+                              WHEN dan='SR' THEN 2
+                              WHEN dan='CE' THEN 3
+                              WHEN dan='PE' THEN 4
+                         END ASC, termin ASC ";
 
 $stmt = $mysqli->prepare($q);
 $oznDvorana = $_GET['oznDvorana'];
@@ -51,7 +57,7 @@ $result = $stmt->get_result();
       if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
             $ispis = "";
-            $ispis .= "<p>" . dayFormat($row['oznVrstaDan']) . ", " 
+            $ispis .= "<p>" . dayFormat($row['dan']) . ", " 
                             . timeFormat($row['termin']) . ", " 
                             . $row['predmet'] . "</p>";
             htmlout($ispis);
