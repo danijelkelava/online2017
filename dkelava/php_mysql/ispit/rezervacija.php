@@ -44,7 +44,6 @@ $result = $stmt->get_result();
                             . timeFormat($row['termin']) . ", " 
                             . $row['predmet'] . "</p>";
             htmlout($ispis);
-            var_dump(timeFormat($row['termin']));
         }
       }else{
             $ispis = "<tr>Nema rezervacija za trazenu dvoranu</tr>";
